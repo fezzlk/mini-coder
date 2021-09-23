@@ -5,7 +5,7 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className="h-full flex flex-wrap content-center justify-center">
-        <div className="font-bold text-7xl">
+        <div className="font-bold text-7xl whitespace-nowrap">
           <span className="p-3">
             Welcome to
           </span>

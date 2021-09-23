@@ -6,17 +6,28 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="container mx-auto h-screen">
+    <>
       <Head>
         <title>mini-corder</title>
         <meta name="description" content="mini-coder help you to practice coding!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-full">{children}</main>
+      <header className="flex justify-between p-3 border-b">
+        <div className="text">
+          mini coder
+        </div>
+        <div className="text">
+          fezzlk
+        </div>
+      </header>
+
+      <div className="container mx-auto h-screen">
+        <main className="h-full">{children}</main>
+      </div>
 
       <footer>
       </footer>
-    </div>
+    </>
   );
 }

@@ -1,31 +1,28 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
+import Editor from "@monaco-editor/react";
 
-const Home: NextPage = () => {
+const ExamPage: NextPage = () => {
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-5 my-10">
       <div>
         Q. 整数 a, b が標準入力で与えられます。a + b を出力してください。
       </div>
-      <input type="text"></input>
-      <Editor mode="javascript" theme="github" value="const foo = 42;" />
-      <Button variant="contained" color="primary">Submit</Button>
+      <div className="border">
+        <Editor
+          height="10vh"
+          defaultLanguage="python"
+          defaultValue=""
+        />
+      </div>
+      <div>
+        <Button variant="contained" color="primary">Submit</Button>
+      </div>
     </div>
   )
 }
 
-export default Home
-
-const Editor = (props) => {
-  if (typeof window !== 'undefined') {
-    const Ace = require('react-ace').default;
-    require('brace/mode/javascript');
-    require('brace/theme/github');
-
-    return <Ace {...props}/>
-  }
-
-  return null;
-}
+export default ExamPage
 

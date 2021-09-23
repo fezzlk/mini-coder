@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 
 type Props = {
   children?: React.ReactNode;
@@ -13,9 +14,13 @@ export default function Layout({ children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="flex justify-between p-3 border-b">
+      <header className="flex justify-between p-5 border-b">
         <div className="text">
-          mini coder
+          <Link href="/">
+            <a>
+              mini coder
+            </a>
+          </Link>
         </div>
         <div className="text">
           fezzlk

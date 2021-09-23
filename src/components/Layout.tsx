@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import styles from '~/styles/Home.module.css'
 
 type Props = {
   children?: React.ReactNode;
@@ -7,16 +6,16 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className={styles.container}>
+    <div className="container mx-auto h-screen">
       <Head>
         <title>mini-corder</title>
         <meta name="description" content="mini-coder help you to practice coding!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>{children}</main>
+      <main className="h-full">{children}</main>
 
-      <footer className={styles.footer}>
+      <footer>
       </footer>
     </div>
   );

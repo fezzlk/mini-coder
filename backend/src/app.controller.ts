@@ -14,8 +14,7 @@ export class AppController {
   @Get(':exam_id')
   getExam(@Param() params): string {
     console.log(params.exam_id);
-    // return exam;
-    return this.appService.getHello();
+    return '整数 a, b が標準入力で与えられます。a + b を出力してください。';
   }
   
   @Post()

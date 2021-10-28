@@ -23,6 +23,7 @@
     "baseUrl": "src",
     "paths": {
       "~/components/*": ["components/*"],
+      "~/stores/*": ["stores/*"],
       "~/styles/*": ["styles/*"],
     }
   },

@@ -25,6 +25,7 @@ export default function ExamArea() {
       <div>
         <Button variant="contained" color="primary">Submit</Button>
       </div>
+      <div>送信処理は未実装です</div>
     </div>
   );
 }

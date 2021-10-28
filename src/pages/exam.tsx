@@ -17,7 +17,7 @@ const ExamPage: NextPage = (props) => {
 
 export async function getStaticProps() {
   const axios = axiosBase.create({
-    baseURL: 'http://localhost:3100',
+    baseURL: process.env.BACKEND_SERVER_URL,
     headers: {
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest',

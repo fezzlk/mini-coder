@@ -18,7 +18,7 @@ class RestClient {
 
   async apiGet(url: string, query = {}): Promise<AxiosResponse> {
     try {
-      return await this.axios.get(`/api/v1${url}`, { ...query });
+      return await this.axios.get(url, { ...query });
     } catch (err: any) {
       throw new Error();
     }
@@ -26,7 +26,7 @@ class RestClient {
 
   async apiPost<T>(url: string, body = {}): Promise<AxiosResponse<T>> {
     try {
-      return await this.axios.post(`/api/v1${url}`, body);
+      return await this.axios.post(url, body);
     } catch (e) {
       throw new Error();
     }
@@ -34,7 +34,7 @@ class RestClient {
 
   async apiPut<T>(url: string, body = {}): Promise<AxiosResponse<T>> {
     try {
-      return await this.axios.put(`/api/v1${url}`, body);
+      return await this.axios.put(url, body);
     } catch (e) {
       throw new Error();
     }
@@ -42,7 +42,7 @@ class RestClient {
 
   async apiDelete<T>(url: string, body = {}): Promise<AxiosResponse<T>> {
     try {
-      return await this.axios.delete(`/api/v1${url}`, { data: body });
+      return await this.axios.delete(url, { data: body });
     } catch (e) {
       throw new Error();
     }

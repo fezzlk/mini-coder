@@ -1,10 +1,16 @@
+import { ReactNode } from 'react';
 import type { NextPage } from 'next';
 import ExamArea from '~/components/ExamArea';
 import Layout from '~/components/Layout';
 import { useQuestionSet } from '~/stores/contexts';
 import axiosBase from 'axios';
+import { restClient } from '~/utils/rest-client';
 
-const ExamPage: NextPage = (props) => {
+type Props = {
+  data: any;
+};
+
+const ExamPage: NextPage<Props> = (props: Props): JSX.Element => {
   const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
   mutateQuestionSet(props.data)
   console.log(props.data)
@@ -16,27 +22,17 @@ const ExamPage: NextPage = (props) => {
 }
 
 export async function getStaticProps() {
-  const axios = axiosBase.create({
-    baseURL: process.env.BACKEND_SERVER_URL,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
-    responseType: 'json',
-  });
-  axios.defaults.withCredentials = true;
-  const { data } = await axios.get(`/1`);
-  console.log(data);
-  if (data == null) {
+  try {
+    const { data } = await restClient.apiGet('/1', { });
+    return {
+      props: { data },
+    }
+  } catch (e) {
     return {
       props: {
         data: '問題の取得に失敗しました。'
       }
     }
-  }
-    
-  return {
-    props: { data },
   }
 }
 

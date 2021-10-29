@@ -25,6 +25,7 @@
       "~/components/*": ["components/*"],
       "~/stores/*": ["stores/*"],
       "~/styles/*": ["styles/*"],
+      "~/utils/*": ["utils/*"],
     }
   },
   "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"],

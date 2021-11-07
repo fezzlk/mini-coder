@@ -3,12 +3,17 @@ import { useEffect, useState } from 'react';
 import { useQuestionSet } from '~/stores/contexts';
 import Button from '@mui/material/Button';
 import Editor from "@monaco-editor/react";
+import { restClient } from '~/utils/rest-client';
 
 
 export default function ExamArea() {
   const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
-  // if (error) return <div>問題の取得に失敗しました。</div>
-  // if (!data) return <div>Loading...</div>
+  const [answer, setAnswer] = useState<string>('');
+  if (!questionSet) return <div>Loading...</div>
+
+  const onSubmit = async () => {
+    console.log(answer);
+  }
 
   return (
     <div className="grid grid-cols-1 gap-5 my-10">
@@ -20,10 +25,12 @@ export default function ExamArea() {
           height="10vh"
           defaultLanguage="python"
           defaultValue=""
+          value={answer}
+          onChange={(value) => {setAnswer(value || '')}}
         />
       </div>
       <div>
-        <Button variant="contained" color="primary">Submit</Button>
+        <Button variant="contained" color="primary" onClick={onSubmit}>Submit</Button>
       </div>
       <div>送信処理は未実装です</div>
     </div>

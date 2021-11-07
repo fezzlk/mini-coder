@@ -15,8 +15,8 @@ export default function ExamArea() {
 
   const onSubmit = async () => {
     try {
-      const res = await restClient.apiPost('/submit', { answer });
-      setResult('ダミー結果');
+      const { data }: { data: string} = await restClient.apiPost('/exam', { answer });
+      setResult(data);
     }
     catch(e) {
       console.log(e);

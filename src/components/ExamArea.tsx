@@ -9,10 +9,18 @@ import { restClient } from '~/utils/rest-client';
 export default function ExamArea() {
   const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
   const [answer, setAnswer] = useState<string>('');
+  const [result, setResult] = useState<string>('');
+
   if (!questionSet) return <div>Loading...</div>
 
   const onSubmit = async () => {
-    console.log(answer);
+    try {
+      const res = await restClient.apiPost('/submit', { answer });
+      setResult('ダミー結果');
+    }
+    catch(e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -26,13 +34,15 @@ export default function ExamArea() {
           defaultLanguage="python"
           defaultValue=""
           value={answer}
-          onChange={(value) => {setAnswer(value || '')}}
+          onChange={(value) => { setAnswer(value || '') }}
         />
       </div>
       <div>
         <Button variant="contained" color="primary" onClick={onSubmit}>Submit</Button>
       </div>
-      <div>送信処理は未実装です</div>
+      <div>
+        {result || 'ここに結果が表示されます。'}
+      </div>
     </div>
   );
 }

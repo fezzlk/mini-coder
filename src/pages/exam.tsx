@@ -13,7 +13,6 @@ type Props = {
 const ExamPage: NextPage<Props> = (props: Props): JSX.Element => {
   const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
   mutateQuestionSet(props.data)
-  console.log(props.data)
   return (
     <Layout>
       <ExamArea />
@@ -23,7 +22,7 @@ const ExamPage: NextPage<Props> = (props: Props): JSX.Element => {
 
 export async function getStaticProps() {
   try {
-    const { data } = await restClient.apiGet('/1', { });
+    const { data } = await restClient.apiGet('/exam/1', { });
     return {
       props: { data },
     }

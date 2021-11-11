@@ -28,7 +28,7 @@ export default function Layout({ children }: Props) {
       </header>
 
       <div className="container mx-auto h-screen">
-        <main className="h-full">{children}</main>
+        <main className="h-full mx-10">{children}</main>
       </div>
 
       <footer>

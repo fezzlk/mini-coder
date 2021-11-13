@@ -27,6 +27,7 @@ export async function getStaticProps() {
       props: { data },
     }
   } catch (e) {
+    console.log(e);
     return {
       props: {
         data: '問題の取得に失敗しました。'

@@ -17,7 +17,7 @@ export default function ExamArea(props: Props) {
 
   const onSubmit = async () => {
     try {
-      const { data }: { data: { answer: string, result: string, isCorrect: boolean }} = await restClient.apiPost('/exam', { answer });
+      const { data }: { data: { answer: string, result: string, isCorrect: boolean }} = await restClient.apiPost('/exam', { id: props.id, answer });
       setResult('出力結果: ' + data.result);
       setIsCorrect(data.isCorrect);
     }
@@ -27,7 +27,7 @@ export default function ExamArea(props: Props) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 my-10">
+    <div className="grid grid-cols-1 gap-5">
       <div>
         Q. {props.q}
       </div>

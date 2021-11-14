@@ -70,6 +70,6 @@ export default function ExamContentsTab() {
           );
         })
       }
-    </Box>
+      </Box>
   );
 }

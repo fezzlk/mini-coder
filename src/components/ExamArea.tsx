@@ -4,11 +4,7 @@ import { useQuestionSet } from '~/stores/contexts';
 import Button from '@mui/material/Button';
 import Editor from "@monaco-editor/react";
 import { restClient } from '~/utils/rest-client';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import SelectPLang from '~/components/SelectPLang';
 
 export default function ExamArea() {
   const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
@@ -35,17 +31,7 @@ export default function ExamArea() {
         Q. {questionSet}
       </div>
       <div>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Language</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value='python3'
-            label="Language"
-          >
-            <MenuItem value='python3'>Python3</MenuItem>
-          </Select>
-        </FormControl>
+        <SelectPLang />
       </div>
       <div className="border">
         <Editor

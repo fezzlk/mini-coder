@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
 import type { NextPage } from 'next';
-import ExamArea from '~/components/ExamArea';
+import ExamContentsTab from '~/components/ExamContentsTab';
 import Layout from '~/components/Layout';
 import { useQuestionSet } from '~/stores/contexts';
-import axiosBase from 'axios';
 import { restClient } from '~/utils/rest-client';
 
 type Props = {
@@ -11,11 +9,11 @@ type Props = {
 };
 
 const ExamPage: NextPage<Props> = (props: Props): JSX.Element => {
-  const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
+  const { mutate: mutateQuestionSet} = useQuestionSet();
   mutateQuestionSet(props.data)
   return (
     <Layout>
-      <ExamArea />
+      <ExamContentsTab />
     </Layout>
   )
 }

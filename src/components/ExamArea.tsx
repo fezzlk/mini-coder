@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-// import useSWR from 'swr';
-import { useQuestionSet } from '~/stores/contexts';
 import Button from '@mui/material/Button';
 import Editor from "@monaco-editor/react";
 import { restClient } from '~/utils/rest-client';
 import SelectPLang from '~/components/SelectPLang';
 
-export default function ExamArea() {
-  const { data: questionSet, mutate: mutateQuestionSet } = useQuestionSet();
+interface Props {
+  id: string;
+  q: string;
+}
+
+export default function ExamArea(props: Props) {
   const [answer, setAnswer] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
-  if (!questionSet) return <div>Loading...</div>
 
   const onSubmit = async () => {
     try {
@@ -28,7 +29,7 @@ export default function ExamArea() {
   return (
     <div className="grid grid-cols-1 gap-5 my-10">
       <div>
-        Q. {questionSet}
+        Q. {props.q}
       </div>
       <div>
         <SelectPLang />
